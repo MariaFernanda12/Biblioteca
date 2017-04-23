@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.co.sergio.mundo.vo.Estudiante;
 import java.net.URISyntaxException;
+import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -156,6 +157,22 @@ public class EstudianteDAO implements IBaseDatos<Estudiante> {
 
     @Override
     public boolean search(Estudiante t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     boolean result=false;
+     Connection connection = null;
+     try{
+        connection = Conexion.getConnection(); 
+     }catch(URISyntaxException ex){
+         
+     }
+    String query = "SELECT * FROM nombre WHERE nombreEstu='usuario' AND claveEstu ='clave' = ?";
+    PreparedStatement preparedStmt=null;
+    try{
+        preparedStmt = connection.prepareStatement(query);
+        result= preparedStmt.execute();
+    }catch(SQLException e){
+        e.printStackTrace();
+    }
+     
+     return result;
     }
 }
