@@ -54,10 +54,10 @@ public class EstudianteDAO implements IBaseDatos<Estudiante> {
 	      
 	        Estudiante registro= new Estudiante();
 	        id = rs.getInt("id_depto");
-	        registro.setId_departamento(id);
+	        registro.setClave(id);
 	        
 	        nombre = rs.getString("nom_depto");
-	        registro.setNom_departamento(nombre) ;
+	        registro.setNom(nombre) ;
 	        
 	        departamentos.add(registro);
 	    }
@@ -89,8 +89,8 @@ public class EstudianteDAO implements IBaseDatos<Estudiante> {
         PreparedStatement preparedStmt=null;
 	    try {
 			preparedStmt = connection.prepareStatement(query);
-			preparedStmt.setInt (1, t.getId_departamento());
-                        preparedStmt.setString (2, t.getNom_departamento());
+			preparedStmt.setInt (1, t.getClave());
+                        preparedStmt.setString (2, t.getNom());
 			result= preparedStmt.execute();
 	    } catch (SQLException e) {
 			e.printStackTrace();
@@ -115,8 +115,8 @@ public class EstudianteDAO implements IBaseDatos<Estudiante> {
 		PreparedStatement preparedStmt=null;
 		try {
 		    preparedStmt = connection.prepareStatement(query);
-		    preparedStmt.setString(1, t.getNom_departamento());
-                    preparedStmt.setInt   (2, t.getId_departamento());
+		    preparedStmt.setString(1, t.getNom());
+                    preparedStmt.setInt   (2, t.getClave());
 		    if (preparedStmt.executeUpdate() > 0){
 		    	result=true;
 		    }
@@ -145,7 +145,7 @@ public class EstudianteDAO implements IBaseDatos<Estudiante> {
 	   PreparedStatement preparedStmt=null;
 	   try {
 		     preparedStmt = connection.prepareStatement(query);
-		     preparedStmt.setInt(1, t.getId_departamento());
+		     preparedStmt.setInt(1, t.getClave());
 		    result= preparedStmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -153,4 +153,9 @@ public class EstudianteDAO implements IBaseDatos<Estudiante> {
 	   
 	   return result;
 	}
+
+    @Override
+    public boolean search(Estudiante t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

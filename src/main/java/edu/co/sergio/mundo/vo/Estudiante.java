@@ -1,20 +1,20 @@
 package edu.co.sergio.mundo.vo;
 
 public class Estudiante {
-	private int id_departamento;
-	private String nom_departamento;
+	private int clave;
+	private String nom;
 	
-	public int getId_departamento() {
-		return id_departamento;
+	public int getClave() {
+		return clave;
 	}
-	public void setId_departamento(int id_departamento) {
-		this.id_departamento = id_departamento;
+	public void setClave(int clave) {
+		this.clave = clave;
 	}
-	public String getNom_departamento() {
-		return nom_departamento;
+	public String getNom() {
+		return nom ;
 	}
-	public void setNom_departamento(String nom_departamento) {
-		this.nom_departamento = nom_departamento;
+	public void setNom (String nom ) {
+		this.nom  = nom ;
 	}
 	
 	

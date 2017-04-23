@@ -7,5 +7,6 @@ public interface IBaseDatos<T> {
     boolean insert(T t);
     boolean update(T t);
     boolean delete(T t);
+    boolean search(T t);
     
 }
