@@ -1,6 +1,6 @@
 package edu.co.sergio.mundo.vo;
 
-public class Departamento {
+public class Estudiante {
 	private int id_departamento;
 	private String nom_departamento;
 	

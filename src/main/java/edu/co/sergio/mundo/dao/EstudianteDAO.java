@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import edu.co.sergio.mundo.vo.Departamento;
+import edu.co.sergio.mundo.vo.Estudiante;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,20 +26,20 @@ import java.util.logging.Logger;
  */
  
 
-public class DepartamentoDAO implements IBaseDatos<Departamento> {
+public class EstudianteDAO implements IBaseDatos<Estudiante> {
 
 	/**
 	 * Funcion que permite obtener una lista de los departamentos existentes en la base de datos
 	 * @return List<Departamento> Retorna la lista de Departamentos existentes en la base de datos
 	 */
-	public List<Departamento> findAll() {
-		List<Departamento> departamentos= null;
+	public List<Estudiante> findAll() {
+		List<Estudiante> departamentos= null;
 	    String query = "SELECT * FROM Depto";
 	    Connection connection = null;
             try {
                 connection = Conexion.getConnection();
             } catch (URISyntaxException ex) {
-                Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EstudianteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 	    try {
 	    Statement st = connection.createStatement();
@@ -49,10 +49,10 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 	
 	    while (rs.next()){
 	    	if(departamentos == null){
-	    		departamentos= new ArrayList<Departamento>();
+	    		departamentos= new ArrayList<Estudiante>();
 	    	}
 	      
-	        Departamento registro= new Departamento();
+	        Estudiante registro= new Estudiante();
 	        id = rs.getInt("id_depto");
 	        registro.setId_departamento(id);
 	        
@@ -77,13 +77,13 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 	 * @param Departamento recibe un objeto de tipo Departamento 
 	 * @return boolean retorna true si la operacion de insercion es exitosa.
 	 */
-	public boolean insert(Departamento t) {
+	public boolean insert(Estudiante t) {
 		boolean result=false;
 		Connection connection=null;
             try {
                 connection = Conexion.getConnection();
             } catch (URISyntaxException ex) {
-                Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EstudianteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 	    String query = " insert into Depto (id_depto,nom_depto)"  + " values (?,?)";
         PreparedStatement preparedStmt=null;
@@ -103,13 +103,13 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 	 * @param Departamento recibe un objeto de tipo Departamento 
 	 * @return boolean retorna true si la operacion de actualizacion es exitosa.
 	 */
-	public boolean update(Departamento t) {
+	public boolean update(Estudiante t) {
 		boolean result=false;
 		Connection connection= null;
             try {
                 connection = Conexion.getConnection();
             } catch (URISyntaxException ex) {
-                Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EstudianteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 		String query = "update Depto set nom_depto = ? where id_depto = ?";
 		PreparedStatement preparedStmt=null;
@@ -133,13 +133,13 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 	 * @param Departamento recibe un objeto de tipo Departamento 
 	 * @return boolean retorna true si la operacion de borrado es exitosa.
 	 */
-	public boolean delete(Departamento t) {
+	public boolean delete(Estudiante t) {
 	   boolean result=false;
 	   Connection connection = null;
             try {
                 connection = Conexion.getConnection();
             } catch (URISyntaxException ex) {
-                Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EstudianteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 	   String query = "delete from Depto where id_depto = ?";
 	   PreparedStatement preparedStmt=null;
